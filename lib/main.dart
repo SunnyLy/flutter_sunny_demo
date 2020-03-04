@@ -6,7 +6,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    var materialApp = MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -21,6 +21,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+
+    return WillPopScope(
+      child: materialApp,
+      onWillPop: () async {
+        print("返回键被点击");
+        return false;
+      },
     );
   }
 }
@@ -46,7 +54,46 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void initState() {
+    print("xxxx:initState()");
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    print("xxxx:didChangeDependencies");
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(MyHomePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget:${oldWidget.title}");
+  }
+
+  @override
+  void setState(fn) {
+    super.setState(fn);
+    print("setState");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("deactiveate:");
+  }
+
+  @override
+  void dispose() {
+    print("xxxx:dispose()");
+    super.dispose();
+  }
+
   void _incrementCounter() {
+    if (_counter > 12) {
+      dispose();
+    }
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -59,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print("xxxx:build()");
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -91,9 +139,14 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Offstage(
+              //动态控制控件的显示与隐藏
+              offstage: _counter > 10 ? true : false,
+              child: Text('按钮已经点击次数'),
             ),
+            /* Text(
+              '按钮已点击次数:',
+            ),*/
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
