@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sunny_demo/utils/ToastUtil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,16 +23,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: WillPopScope(
+        child: MyHomePage(title: 'Flutter Demo Home Page'),
+        onWillPop: () async {
+          Fluttertoast.showToast(msg: "点击了返回键");
+          return false;
+        },
+      ),
     );
 
-    return WillPopScope(
-      child: materialApp,
-      onWillPop: () async {
-        print("返回键被点击");
-        return false;
-      },
-    );
+    return materialApp;
   }
 }
 
@@ -151,6 +154,57 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+
+            //再添加一个layout,用于存放一个输入框，与一个文案提示
+            Container(
+              margin: EdgeInsets.all(15),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    '用户名:',
+                    style: TextStyle(
+                        color: Colors.black26,
+                        fontSize: 16,
+                        fontStyle: FontStyle.normal),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: TextField(
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                            icon: Icon(Icons.person), hintText: "请输入用户名"),
+                        keyboardType: TextInputType.text, //会弹出文本输入键盘
+                      )), //用来限制输入框的宽高
+                ],
+              ),
+            ),
+
+            Container(
+              margin: EdgeInsets.all(15),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    "密码",
+                  ),
+                  Expanded(
+                      child: TextField(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.lock), hintText: "请输入密码"),
+                  ))
+                ],
+              ),
+            ),
+
+            Container(
+                width: 300,
+                height: 50,
+                margin: EdgeInsets.fromLTRB(15, 30, 15, 15),
+                child: FlatButton(
+                  onPressed: () {},
+                  child: Text("登录"),
+                  color: Colors.blueAccent,
+                  textColor: Colors.white,
+                ))
           ],
         ),
       ),
