@@ -63,7 +63,7 @@ class _SplashPageState extends State<SplashPage> {
 
       print("_count:$_totalTime");
       if (_totalTime == 0) {
-        Navigator.of(context).pushReplacementNamed(Constants.route_main);
+//        Navigator.of(context).pushReplacementNamed(Constants.route_main);
       }
     });
   }
@@ -81,7 +81,7 @@ class _SplashPageState extends State<SplashPage> {
     var app = MaterialApp(
       theme: ThemeData(primaryColor: Colors.blueAccent),
       home: Stack(
-        alignment: Alignment(0, 0),
+        alignment: Alignment(1.0, 1.0),
         children: <Widget>[
           Image(
             image: AssetImage(Res.splash_bg),
@@ -103,15 +103,21 @@ class _SplashPageState extends State<SplashPage> {
                 )),
           ),
           Align(
-            alignment: Alignment.bottomCenter,
-            widthFactor: 0.5,
-            heightFactor: 0.5,
-            child: FlatButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, Constants.route_main);
-                },
-                child: Text("跳过")),
-          )
+              alignment: Alignment.bottomCenter,
+              widthFactor: 1,
+              heightFactor: 1,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 15, 15),
+                child: FlatButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                          context, Constants.route_main);
+                    },
+                    color: Colors.grey[100],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Text("跳过>>")),
+              ))
         ],
       ),
     );
