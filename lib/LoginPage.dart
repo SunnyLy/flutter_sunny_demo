@@ -4,9 +4,9 @@ import 'package:flutter_sunny_demo/home/home.dart';
 import 'package:flutter_sunny_demo/utils/ToastUtil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MainPage extends StatelessWidget {
   DateTime _lastClickTime; //上次点击的时间
   @override
   Widget build(BuildContext context) {
