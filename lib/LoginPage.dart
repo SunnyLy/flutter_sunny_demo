@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 //void main() => runApp(MyApp());
 
-class MainPage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   DateTime _lastClickTime; //上次点击的时间
   @override
   Widget build(BuildContext context) {

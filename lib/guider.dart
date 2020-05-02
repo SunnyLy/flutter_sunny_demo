@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 ///@Date 2020/3/10 9:47
 ///@Version V1.0.0
 ///
-class Page extends StatefulWidget {
-  Page({Key key, this.title}) : super(key: key);
+class GuiderPage extends StatefulWidget {
+  GuiderPage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _PageState createState() => _PageState();
+  _GuiderPageState createState() => _GuiderPageState();
 }
 
-class _PageState extends State<Page> {
+class _GuiderPageState extends State<GuiderPage> {
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sunny_demo/constant/Constants.dart';
+import 'package:flutter_sunny_demo/guider.dart';
 import 'package:flutter_sunny_demo/splash.dart';
+import 'package:flutter_sunny_demo/utils/SpUtils.dart';
 
 import 'LoginPage.dart';
+import 'home/home.dart';
 
 ///
 ///@Annotation <p>闪屏页面</p>
@@ -33,7 +36,8 @@ class _AppPageState extends State<AppPage> {
     var app = MaterialApp(
       //注册路由
       routes: {
-        Constants.route_main: (context) => MainPage(),
+        Constants.route_main: (context) => HomePage(title: "首页"), //
+        Constants.route_guider: (context) => GuiderPage(title: "引导页面")
       },
       theme: ThemeData(primaryColor: Colors.blueAccent),
       home: SplashPage(),
@@ -43,5 +47,7 @@ class _AppPageState extends State<AppPage> {
     return app;
   }
 
-  void init() {}
+  void init() {
+    SpUtils.getInstance();
+  }
 }

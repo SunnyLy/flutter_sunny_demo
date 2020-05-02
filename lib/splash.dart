@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sunny_demo/constant/Constants.dart';
 import 'package:flutter_sunny_demo/home/home.dart';
 import 'package:flutter_sunny_demo/res.dart';
+import 'package:flutter_sunny_demo/utils/SpUtils.dart';
 
 import 'LoginPage.dart';
 
@@ -63,7 +64,7 @@ class _SplashPageState extends State<SplashPage> {
 
       print("_count:$_totalTime");
       if (_totalTime == 0) {
-//        Navigator.of(context).pushReplacementNamed(Constants.route_main);
+        jumpPage();
       }
     });
   }
@@ -129,5 +130,21 @@ class _SplashPageState extends State<SplashPage> {
       _timer.cancel();
       _timer = null;
     }
+  }
+
+  ///页面跳转
+  void jumpPage() {
+    var isfirstOpen = isFirstOpen(); //是否为首次打开，或者应用更新
+    if (!isfirstOpen) {
+      Navigator.of(context).pushReplacementNamed(Constants.route_main);
+    } else {
+      Navigator.of(context).pushReplacementNamed(Constants.route_guider);
+      SpUtils.putBool(Constants.first_open, false);
+    }
+  }
+
+  ///判断应用是否首次打开，或者应用版本升级更新
+  bool isFirstOpen() {
+    return SpUtils.isFirstOpen();
   }
 }
