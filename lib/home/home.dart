@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sunny_demo/widgets/bottom_navigator.dart';
 
 ///
 ///@Annotation <p>首页</p>
@@ -21,6 +22,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
+        //加个底部导航栏
+        bottomNavigationBar: BottomNavigator(),
         body: Center(
           child: Column(),
         ) // This trailing comma makes auto-formatting nicer for build methods.

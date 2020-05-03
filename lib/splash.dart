@@ -35,6 +35,8 @@ class _SplashPageState extends State<SplashPage> {
     startCutdown();
   }
 
+
+
   void init() {
     refreshUI(_totalTime);
   }
