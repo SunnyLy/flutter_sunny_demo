@@ -1,5 +1,5 @@
 name: flutter_sunny_demo
-description: 根据玩Android，初步学习Flutter的基本用法，先入门
+description: 根据玩Android，初步学习Flutter的基本用法，先入
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -79,12 +79,21 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
+  fonts:
+    - family: BottomNavigtionIcons
+      fonts:
+        - asset: font/iconfont.ttf
+
 
   #图片资源
   assets:
     - images/demo_logo.png
     - images/icon_connect.png
+    - images/icon_connect_selected.png
     - images/icon_found.png
+    - images/icon_found_selected.png
     - images/icon_mine.png
+    - images/icon_mine_selected.png
     - images/icon_wechat.png
+    - images/icon_wechat_selected.png
     - images/splash_bg.png

@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sunny_demo/widgets/rich_text_button.dart';
 import 'package:flutter_sunny_demo/res.dart';
 
-/**@Annotation <p>底部导航栏</p>
- * @Auth  Sunny
- * @date 2020/5/3
- * @Version V1.0.0
- */
+/// @Annotation <p>底部导航栏</p>
+/// @Auth  Sunny
+
+/// @date 2020/5/3
+
+/// @Version V1.0.0
+
 class BottomNavigator extends StatefulWidget {
   BottomNavigator({Key key}) : super(key: key);
 
@@ -20,7 +22,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,//spaceBetween对行平分
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly, //spaceBetween对行平分
         children: <Widget>[
           RichTextButton(title: "微信", iconUri: Res.icon_wechat),
           RichTextButton(title: "联系人", iconUri: Res.icon_connect),
