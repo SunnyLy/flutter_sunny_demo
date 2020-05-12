@@ -45,13 +45,21 @@ class _IconRedState extends State<IconRed> {
       child: Stack(
         children: <Widget>[
           _iconWidget,
-          Material(child:  Text(
-            "$_count",
-            style: TextStyle(
-                backgroundColor: Colors.red, color: Colors.white, fontSize: 14),
-          ),color: Colors.red,
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),)
-
+          Positioned(
+            right: 4,
+            top: 4,
+            child: Material(
+              child: Text(
+                "$_count",
+                style: TextStyle(
+                    backgroundColor: Colors.red,
+                    color: Colors.white,
+                    fontSize: 14),
+              ),
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+          ),
         ],
       ),
     );

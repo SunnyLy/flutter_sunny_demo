@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sunny_demo/home/chat.dart';
+import 'file:///D:/workspace/flutter_workspace/flutter_sunny_demo/lib/home/chat/chat.dart';
 import 'package:flutter_sunny_demo/home/contacts.dart';
 import 'package:flutter_sunny_demo/home/found.dart';
 import 'package:flutter_sunny_demo/home/mine.dart';
 import 'package:flutter_sunny_demo/widgets/bottom_tab_bar.dart';
 import 'package:flutter_sunny_demo/widgets/bottom_tab_bar_item.dart';
-import 'package:flutter_sunny_demo/widgets/icon_red.dart';
 
 ///
 ///@Annotation <p>首页</p>
