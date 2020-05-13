@@ -83,11 +83,19 @@ flutter:
     - family: BottomNavigtionIcons
       fonts:
         - asset: font/iconfont.ttf
+    - family: AppBarIcons
+      fonts:
+        - asset: font/appbar_iconfont.ttf
 
 
   #图片资源
   assets:
+    - images/def_icon.png
     - images/demo_logo.png
+    - images/icon1.png
+    - images/icon2.png
+    - images/icon3.png
+    - images/icon4.png
     - images/icon_connect.png
     - images/icon_connect_selected.png
     - images/icon_found.png
@@ -97,4 +105,3 @@ flutter:
     - images/icon_wechat.png
     - images/icon_wechat_selected.png
     - images/splash_bg.png
-    - images/def_icon.png

@@ -36,7 +36,7 @@ class _AppPageState extends State<AppPage> {
     var app = MaterialApp(
       //注册路由
       routes: {
-        Constants.route_main: (context) => HomePage(title: "首页"), //
+        Constants.route_main: (context) => HomePage(title: "微信"), //
         Constants.route_guider: (context) => GuiderPage(title: "引导页面")
       },
       theme: ThemeData(primaryColor: Colors.blueAccent),

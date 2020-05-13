@@ -33,61 +33,74 @@ class _HomePageState extends State<HomePage> {
   //消息未读数
   var _redCount = 50;
 
+  List _appbarDatas = [
+    {"icon_codePoint": 0xe66c, "tag": "添加好友", "color": Colors.white},
+    {"icon_codePoint": 0xe611, "tag": "扫一扫","color": Colors.white},
+    {"icon_codePoint": 0xe64d, "tag": "收付款","color": Colors.white},
+    {"icon_codePoint": 0xe60d, "tag": "帮助与反馈","color": Colors.white}
+  ];
+
+  List<PopupMenuItem> getPopupMenuItems() {
+    return _appbarDatas.map((item) {
+      return PopupMenuItem(
+          child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 30,
+            height: 30,
+            child: Icon(
+              IconData(item['icon_codePoint'], fontFamily: 'AppBarIcons'),
+              color: item['color'],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
+            child: Text(
+              item['tag'],
+              style: TextStyle(color: Colors.white),
+            ),
+          )
+        ],
+      ));
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        backgroundColor: Colors.grey[400],
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.black),
+        ),
+        //放搜索，加号等 图标
+        actions: <Widget>[
+          GestureDetector(
+              child: Icon(
+            IconData(0xe608, fontFamily: 'AppBarIcons'),
+          )),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 15, 15, 15),
+            child: GestureDetector(
+              child: Icon(IconData(0xe84f, fontFamily: 'AppBarIcons')),
+              onTap: () {
+                //点击时弹出popupwindow
+                showMenu(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    context: context,
+                    elevation: 1,
+                    color: Color(0xFF545454),
+                    position: RelativeRect.fromLTRB(0, 80, -10, 0),
+                    items: getPopupMenuItems());
+              },
+            ),
+          ),
+        ],
       ),
       //加个底部导航栏
-//        bottomNavigationBar: BottomNavigator(),
-//      bottomNavigationBar: BottomNavigationBar(
-//        items: [
-//          //加红点
-//          BottomNavigationBarItem(
-//              icon: IconRed(
-//                showReddot: true,
-//                count: _redCount,
-//                iconData: IconData(0xe603, fontFamily: 'BottomNavigtionIcons'),
-//              ),
-//              //注意一定要放到font目录下
-////                activeIcon: Image.asset(Res.icon_wechat_selected,width: 24,height: 24,),
-//              activeIcon: IconRed(
-//                showReddot: true,
-//                count: _redCount,
-//                iconData: IconData(0xe7fe, fontFamily: 'BottomNavigtionIcons'),
-//              ),
-//              title: Text("聊天")),
-//          BottomNavigationBarItem(
-//              icon: Icon(IconData(0xe600, fontFamily: 'BottomNavigtionIcons')),
-//              activeIcon:
-//                  Icon(IconData(0xe601, fontFamily: 'BottomNavigtionIcons')),
-//              title: Text("联系人"),
-//          ),
-//          BottomNavigationBarItem(
-//              icon: Icon(IconData(0xe640, fontFamily: 'BottomNavigtionIcons')),
-//              activeIcon:
-//                  Icon(IconData(0xe62a, fontFamily: 'BottomNavigtionIcons')),
-//              title: Text("发现")),
-//          BottomNavigationBarItem(
-//              icon: Icon(IconData(0xe6cf, fontFamily: 'BottomNavigtionIcons')),
-//              activeIcon:
-//                  Icon(IconData(0xe624, fontFamily: 'BottomNavigtionIcons')),
-//              title: Text("我的"))
-//        ],
-//        currentIndex: widget._curIndex,
-//
-//        //点击监听
-//        onTap: (int selectIndex) {
-//          _pageController.jumpToPage(selectIndex);
-//        },
-////          type: BottomNavigationBarType.shifting,//点击tab时，以渐显的效果出现
-//        type: BottomNavigationBarType.fixed,
-//        //点击tab时，以渐显的效果出现
-//        selectedItemColor: Colors.greenAccent,
-//        unselectedItemColor: Colors.black54,
-//      ),
-
       bottomNavigationBar: BottomTabBar(
         badgeColor: Colors.redAccent,
         items: [

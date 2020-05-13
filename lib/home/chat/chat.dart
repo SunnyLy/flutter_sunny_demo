@@ -13,46 +13,79 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  static var _itemView = Container(
-      child: SizedBox(
-    width: double.infinity, //最大宽度
-    height: 100,
-    child: Stack(
+  static var _curTime = DateTime.now();
+  int _hour = _curTime.hour;
+  int _minutes = _curTime.minute;
+
+  static List _itemContentList = [
+    {
+      "icon": Res.icon1,
+      "title": "集团司令部群一",
+      "msg": "接到上级通知：内容内容内容内容内容内容内容。",
+      "time": "14:39:40"
+    },
+    {
+      "icon": Res.icon2,
+      "title": "集团司令部群二",
+      "msg": "接到上级通知：内容内容内容内容内容内容内容。",
+      "time": "14:39:40"
+    },
+    {
+      "icon": Res.icon3,
+      "title": "集团司令部群三",
+      "msg": "接到上级通知：内容内容内容内容内容内容内容。",
+      "time": "14:39:40"
+    },
+    {
+      "icon": Res.icon4,
+      "title": "集团司令部群四",
+      "msg": "接到上级通知：内容内容内容内容内容内容内容。",
+      "time": "14:39:40"
+    }
+  ];
+
+  static Widget getItemWidget(item) {
+    /// 直接用官方的Listtile来实现
+    Widget _listTile = ListTile(
+      leading: Container(
+        width: 60,
+        height: 60,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            image: DecorationImage(
+                image: AssetImage(item["icon"]), fit: BoxFit.cover)),
+      ),
+      title: Text(item['title']),
+      subtitle: Text(
+        item['msg'],
+        overflow: TextOverflow.ellipsis,
+      ),
+      trailing: Text(item['time']), //用于展示在标题后面
+    );
+
+    return Column(
       children: <Widget>[
-        SizedBox(
-            width: 80,
-            height: 80,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Image.asset(Res.demo_logo),
-            ) //头像,
-            ),
-        Positioned(
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              "海陆空集团司令部",
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            ),
+        _listTile,
+        Padding(
+          padding: EdgeInsets.fromLTRB(90, 0, 0, 0),
+          child: Container(
+            width: double.infinity,
+            height: 0.5,
+            color: Colors.grey[400],
           ),
-          left: 100,
-        ), //昵称
-        Positioned(
-            left: 100,
-            top: 50,
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text("Sunny:@李将军 来我办公室一趟。",
-                  style: TextStyle(color: Colors.black, fontSize: 16)),
-            )), //消息
+        )
       ],
-    ),
-  )); //子项布局
-  var _simpleLV = ListView(
-    children: <Widget>[_itemView, _itemView, _itemView, _itemView],
-  ); //简单的Listview,适用于已知item个数的列表
+    );
+  }
+
+  Widget _buildLV = ListView.builder(
+      itemCount: _itemContentList.length,
+      itemBuilder: (buildContext, index) {
+        return getItemWidget(_itemContentList[index]);
+      });
+
   @override
   Widget build(BuildContext context) {
-    return Container(child: _simpleLV);
+    return Container(child: _buildLV);
   }
 }
