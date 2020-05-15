@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sunny_demo/constant/Constants.dart';
 import 'package:flutter_sunny_demo/guider.dart';
 import 'package:flutter_sunny_demo/splash.dart';
+import 'package:flutter_sunny_demo/search/search_page.dart';
 import 'package:flutter_sunny_demo/utils/SpUtils.dart';
 
 import 'LoginPage.dart';
@@ -37,7 +38,8 @@ class _AppPageState extends State<AppPage> {
       //注册路由
       routes: {
         Constants.route_main: (context) => HomePage(title: "微信"), //
-        Constants.route_guider: (context) => GuiderPage(title: "引导页面")
+        Constants.route_guider: (context) => GuiderPage(title: "引导页面"),
+        Constants.route_search: (context) => SearchPage()
       },
       theme: ThemeData(primaryColor: Colors.blueAccent),
       home: SplashPage(),

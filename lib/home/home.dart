@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sunny_demo/constant/Constants.dart';
 import 'file:///D:/workspace/flutter_workspace/flutter_sunny_demo/lib/home/chat/chat.dart';
 import 'package:flutter_sunny_demo/home/contacts.dart';
 import 'package:flutter_sunny_demo/home/found.dart';
@@ -35,9 +36,9 @@ class _HomePageState extends State<HomePage> {
 
   List _appbarDatas = [
     {"icon_codePoint": 0xe66c, "tag": "添加好友", "color": Colors.white},
-    {"icon_codePoint": 0xe611, "tag": "扫一扫","color": Colors.white},
-    {"icon_codePoint": 0xe64d, "tag": "收付款","color": Colors.white},
-    {"icon_codePoint": 0xe60d, "tag": "帮助与反馈","color": Colors.white}
+    {"icon_codePoint": 0xe611, "tag": "扫一扫", "color": Colors.white},
+    {"icon_codePoint": 0xe64d, "tag": "收付款", "color": Colors.white},
+    {"icon_codePoint": 0xe60d, "tag": "帮助与反馈", "color": Colors.white}
   ];
 
   List<PopupMenuItem> getPopupMenuItems() {
@@ -77,8 +78,14 @@ class _HomePageState extends State<HomePage> {
         //放搜索，加号等 图标
         actions: <Widget>[
           GestureDetector(
-              child: Icon(
-            IconData(0xe608, fontFamily: 'AppBarIcons'),
+              child: GestureDetector(
+            child: Icon(
+              IconData(0xe608, fontFamily: 'AppBarIcons'),
+            ),
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(Constants.route_search);
+            },
           )),
           Padding(
             padding: EdgeInsets.fromLTRB(20, 15, 15, 15),
