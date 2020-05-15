@@ -14,5 +14,5 @@ class Res {
   static const String icon_mine_selected = "images/icon_mine_selected.png";
   static const String icon_wechat = "images/icon_wechat.png";
   static const String icon_wechat_selected = "images/icon_wechat_selected.png";
-  static const String splash_bg = "images/splash_bg.png";
+  static const String splash_bg = "images/splash_bg.webp";
 }
