@@ -5,6 +5,8 @@ import 'file:///D:/workspace/flutter_workspace/flutter_sunny_demo/lib/home/chat/
 import 'package:flutter_sunny_demo/home/contacts.dart';
 import 'package:flutter_sunny_demo/home/found.dart';
 import 'package:flutter_sunny_demo/home/mine.dart';
+import 'package:flutter_sunny_demo/search/search_page.dart';
+import 'package:flutter_sunny_demo/utils/SunnyRoute.dart';
 import 'package:flutter_sunny_demo/widgets/bottom_tab_bar.dart';
 import 'package:flutter_sunny_demo/widgets/bottom_tab_bar_item.dart';
 
@@ -83,8 +85,12 @@ class _HomePageState extends State<HomePage> {
               IconData(0xe608, fontFamily: 'AppBarIcons'),
             ),
             onTap: () {
+//              Navigator.of(context)
+//                  .pushNamed(Constants.route_search);
+
+              //采用自定义的路由，实现界面跳转动画
               Navigator.of(context)
-                  .pushNamed(Constants.route_search);
+                  .push(SunnyRoute(SearchPage(), RouteType.FADE));
             },
           )),
           Padding(
